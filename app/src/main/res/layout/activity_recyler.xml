@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="skd.app.androidfeatures.sRecylerView.RecylerActivity">
 
+    <!-- Recycler view -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:scrollbars="vertical"
