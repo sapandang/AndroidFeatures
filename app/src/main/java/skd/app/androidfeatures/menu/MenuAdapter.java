@@ -36,6 +36,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuView> {
     @Override
     public void onBindViewHolder(MenuView holder, int position) {
         holder.text.setText(menuList.get(position).name);
+        holder.activityClass = menuList.get(position).activityClass;
     }
 
     @Override
@@ -46,6 +47,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuView> {
     public  class MenuView extends RecyclerView.ViewHolder
     {
         public TextView text;
+        public Class activityClass = null;
+
         public MenuView(final View itemView) {
             super(itemView);
             text =(TextView) itemView.findViewById(R.id.textView);
@@ -53,7 +56,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuView> {
             text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent in = new Intent(itemView.getContext(), RecylerActivity.class);
+                    Intent in = new Intent(itemView.getContext(),activityClass );
                     MainActivity.mainActivity.startActivity(in);
 
                 }
