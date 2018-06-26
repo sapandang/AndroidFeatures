@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import skd.app.androidfeatures.compoundview.CompoundViewActivity;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
 import skd.app.androidfeatures.menu.MenuAdapter;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("Finger Print Authentication",FingerActivity.class));
         menuList.add(new MenuModel("View Pager demo",PagerActivity.class));
         menuList.add(new MenuModel("Inflator Demo",InflatorActivity.class));
+        menuList.add(new MenuModel("Custom Widget Demo",CompoundViewActivity.class));
 
         mAdapter = new MenuAdapter(menuList);
 

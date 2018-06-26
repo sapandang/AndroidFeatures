@@ -37,7 +37,8 @@
         </activity>
         <activity android:name=".fingerPrintDemo.FingerActivity" />
         <activity android:name=".viewPagerDemo.PagerActivity" />
-        <activity android:name=".inflatorDemo.InflatorActivity"></activity>
+        <activity android:name=".inflatorDemo.InflatorActivity" />
+        <activity android:name=".compoundview.CompoundViewActivity"></activity>
     </application>
 
 </manifest>
