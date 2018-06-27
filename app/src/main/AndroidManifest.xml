@@ -38,7 +38,9 @@
         <activity android:name=".fingerPrintDemo.FingerActivity" />
         <activity android:name=".viewPagerDemo.PagerActivity" />
         <activity android:name=".inflatorDemo.InflatorActivity" />
-        <activity android:name=".compoundview.CompoundViewActivity"></activity>
+        <activity android:name=".compoundview.CompoundViewActivity" />
+        <activity android:name=".dropdowns.Dropdown" />
+        <activity android:name=".pagerwizard.PagerWizard"></activity>
     </application>
 
 </manifest>

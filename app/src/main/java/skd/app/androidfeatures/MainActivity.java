@@ -16,6 +16,7 @@ import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
+import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
 import skd.app.androidfeatures.serviceDemo.DemoService;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("View Pager demo",PagerActivity.class));
         menuList.add(new MenuModel("Inflator Demo",InflatorActivity.class));
         menuList.add(new MenuModel("Custom Widget Demo",CompoundViewActivity.class));
+        menuList.add(new MenuModel("क्या हाल है\n",CompoundViewActivity.class));
+        menuList.add(new MenuModel("PagerWizard",PagerWizard.class));
+
 
         mAdapter = new MenuAdapter(menuList);
 

@@ -39,6 +39,7 @@ public class PagerActivity extends AppCompatActivity {
 
     class FragmentsViewer extends FragmentStatePagerAdapter
     {
+        int CurrentPosition=0;
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -53,6 +54,7 @@ public class PagerActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            CurrentPosition = position;
             return mFragmentList.get(position);
         }
         @Override
