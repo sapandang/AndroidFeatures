@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 
 import skd.app.androidfeatures.compoundview.CompoundViewActivity;
+import skd.app.androidfeatures.dropdowns.Dropdown;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
 import skd.app.androidfeatures.menu.MenuAdapter;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("Custom Widget Demo",CompoundViewActivity.class));
         menuList.add(new MenuModel("क्या हाल है\n",CompoundViewActivity.class));
         menuList.add(new MenuModel("PagerWizard",PagerWizard.class));
+        menuList.add(new MenuModel("DropDown", Dropdown.class));
 
 
         mAdapter = new MenuAdapter(menuList);

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +27,16 @@ public class PagerWizard extends AppCompatActivity {
 
      Button mNextButton;
      Button mPrevButton;
+     ArrayList<Fragment> fragmentsHolder;
 
+     JSONObject dataSet =  new JSONObject();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_wizard);
         appCompatActivity =this;
+        fragmentsHolder =  new ArrayList<>();
 
         //find the views
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
@@ -45,9 +50,13 @@ public class PagerWizard extends AppCompatActivity {
         fragmentsViewer.addFragment(new PagerItem(),"Settings");
         fragmentsViewer.addFragment(new PagerItem(),"34");
 
+
+
         for(int i= 0;i<100;i++)
         {
-            fragmentsViewer.addFragment(new PagerItem(),""+i);
+            PagerItem pi = new PagerItem();
+            pi.setTitle("tile "+i);
+            fragmentsHolder.add(pi);
         }
 
 
@@ -62,7 +71,12 @@ public class PagerWizard extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+
+                PagerItem pi = (PagerItem)fragmentsHolder.get(mViewPager.getCurrentItem());
+                if(pi.canMove()) {
+                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+                }
+
             }
         });
 
@@ -97,7 +111,7 @@ public class PagerWizard extends AppCompatActivity {
         public Fragment getItem(int position)
         {
 
-            if (position==0)
+          /*  if (position==0)
             {
                 CurrentPosition=0;
                 return mFragmentList.get(0);
@@ -113,17 +127,18 @@ public class PagerWizard extends AppCompatActivity {
                 CurrentPosition = position;
                 return mFragment ;
             }
+*/
 
-
-            return  mFragmentList.get(CurrentPosition);
+            return  fragmentsHolder.get(position);
         }
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            return ((PagerItem)fragmentsHolder.get(position)).title;
         }
         @Override
-        public int getCount() {
-            return mFragmentList.size();
+        public int getCount()
+        {
+            return fragmentsHolder.size();
         }
     }
 
