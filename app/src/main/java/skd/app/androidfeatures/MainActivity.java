@@ -1,25 +1,21 @@
 package skd.app.androidfeatures;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
 import skd.app.androidfeatures.compoundview.CompoundViewActivity;
-import skd.app.androidfeatures.dropdowns.Dropdown;
+import skd.app.androidfeatures.dropdowns.DropdownS;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
+import skd.app.androidfeatures.jsonReader.JsonReader;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
 import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
-import skd.app.androidfeatures.serviceDemo.DemoService;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("View Pager demo",PagerActivity.class));
         menuList.add(new MenuModel("Inflator Demo",InflatorActivity.class));
         menuList.add(new MenuModel("Custom Widget Demo",CompoundViewActivity.class));
-        menuList.add(new MenuModel("क्या हाल है\n",CompoundViewActivity.class));
+        menuList.add(new MenuModel("क्या हाल है",CompoundViewActivity.class));
         menuList.add(new MenuModel("PagerWizard",PagerWizard.class));
-        menuList.add(new MenuModel("DropDown", Dropdown.class));
+        menuList.add(new MenuModel("DropDown", DropdownS.class));
+        menuList.add(new MenuModel("JSON Reader", JsonReader.class));
 
 
         mAdapter = new MenuAdapter(menuList);

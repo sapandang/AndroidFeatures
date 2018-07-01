@@ -1,0 +1,1 @@
+{"data":{"page1Checkboxbax":true,"page1Doyoulike":true,"page1Chec":true,"page1Multipleselectbox":{"123":true,"cobra":true,"matter":true,"sel":true},"page1Radio":"box","page2Email":"skdangbgr@gmail.com","page2Password":"789456"}}

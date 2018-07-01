@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import skd.app.androidfeatures.R;
 
-public class Dropdown extends AppCompatActivity {
+public class DropdownS extends AppCompatActivity {
 
 
     Spinner spinner;

@@ -1,0 +1,677 @@
+{
+  "type": "form",
+  "tags": [],
+  "owner": "5b3526e62e8b3a4db2328ac0",
+  "components": [
+    {
+      "type": "panel",
+      "title": "Page 1",
+      "isNew": false,
+      "components": [
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": false,
+          "inputType": "password",
+          "label": "Password",
+          "key": "page1Password",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "protected": true,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "type": "password",
+          "labelPosition": "top",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {},
+          "tabindex": "skdangbgr@gmail.com"
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "inputType": "checkbox",
+          "tableView": true,
+          "label": "checkboxbax",
+          "dataGridLabel": false,
+          "key": "page1Checkboxbax",
+          "defaultValue": false,
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "name": "",
+          "value": "",
+          "clearOnHide": true,
+          "validate": {
+            "required": false
+          },
+          "type": "checkbox",
+          "labelPosition": "right",
+          "hideLabel": false,
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "inputType": "checkbox",
+          "tableView": true,
+          "label": "do you like",
+          "dataGridLabel": false,
+          "key": "page1Doyoulike",
+          "defaultValue": false,
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "name": "",
+          "value": "",
+          "clearOnHide": true,
+          "validate": {
+            "required": false
+          },
+          "type": "checkbox",
+          "labelPosition": "right",
+          "hideLabel": false,
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "inputType": "checkbox",
+          "tableView": true,
+          "label": "chec",
+          "dataGridLabel": false,
+          "key": "page1Chec",
+          "defaultValue": false,
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "name": "",
+          "value": "",
+          "clearOnHide": true,
+          "validate": {
+            "required": false
+          },
+          "type": "checkbox",
+          "labelPosition": "right",
+          "hideLabel": false,
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "inputType": "radio",
+          "label": "Radio",
+          "key": "page1Radio",
+          "values": [
+            {
+              "value": "e",
+              "label": "e",
+              "shortcut": ""
+            },
+            {
+              "value": "gg",
+              "label": "gg",
+              "shortcut": ""
+            },
+            {
+              "value": "yt",
+              "label": "yt",
+              "shortcut": ""
+            },
+            {
+              "value": "hggf",
+              "label": "hggf",
+              "shortcut": ""
+            },
+            {
+              "value": "gv",
+              "label": "gv",
+              "shortcut": ""
+            },
+            {
+              "value": "box",
+              "label": "box",
+              "shortcut": ""
+            },
+            {
+              "value": "zero",
+              "label": "zero",
+              "shortcut": ""
+            },
+            {
+              "value": "deamon",
+              "label": "deamon",
+              "shortcut": ""
+            }
+          ],
+          "defaultValue": "",
+          "protected": false,
+          "fieldSet": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "validate": {
+            "required": false,
+            "custom": "",
+            "customPrivate": false
+          },
+          "type": "radio",
+          "labelPosition": "top",
+          "optionsLabelPosition": "right",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "label": "Text Area",
+          "key": "page1TextArea",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "rows": 3,
+          "multiple": false,
+          "defaultValue": "",
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "wysiwyg": false,
+          "clearOnHide": true,
+          "spellcheck": true,
+          "validate": {
+            "required": false,
+            "minLength": "",
+            "maxLength": "",
+            "pattern": "",
+            "custom": ""
+          },
+          "type": "textarea",
+          "labelPosition": "top",
+          "inputFormat": "plain",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "inputType": "number",
+          "label": "Number",
+          "key": "page1Number",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "defaultValue": "",
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "validate": {
+            "required": false,
+            "min": "",
+            "max": "",
+            "step": "any",
+            "integer": "",
+            "multiple": "",
+            "custom": ""
+          },
+          "type": "number",
+          "labelPosition": "top",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "inputType": "text",
+          "inputMask": "",
+          "label": "Text",
+          "key": "page1Text",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "multiple": false,
+          "defaultValue": "",
+          "protected": false,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "spellcheck": true,
+          "validate": {
+            "required": false,
+            "minLength": "",
+            "maxLength": "",
+            "pattern": "",
+            "custom": "",
+            "customPrivate": false
+          },
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "type": "textfield",
+          "labelPosition": "top",
+          "inputFormat": "plain",
+          "tags": [],
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "label": "multipleselect box",
+          "key": "page1Multipleselectbox",
+          "values": [
+            {
+              "value": "sel",
+              "label": "sel",
+              "shortcut": ""
+            },
+            {
+              "value": "123",
+              "label": "box",
+              "shortcut": ""
+            },
+            {
+              "value": "matter",
+              "label": "matter",
+              "shortcut": ""
+            },
+            {
+              "value": "cobra",
+              "label": "cobra",
+              "shortcut": ""
+            }
+          ],
+          "inline": false,
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "validate": {
+            "required": false
+          },
+          "type": "selectboxes",
+          "labelPosition": "top",
+          "optionsLabelPosition": "right",
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          }
+        }
+      ],
+      "input": false,
+      "key": "page1",
+      "clearOnHide": false,
+      "theme": "default",
+      "tableView": false,
+      "hideLabel": false
+    },
+    {
+      "type": "panel",
+      "title": "Page 2",
+      "isNew": false,
+      "components": [
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "inputType": "email",
+          "label": "Email",
+          "key": "page2Email",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "defaultValue": "",
+          "protected": false,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "kickbox": {
+            "enabled": false
+          },
+          "type": "email",
+          "labelPosition": "top",
+          "inputFormat": "plain",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "label": "Day",
+          "key": "page2Day",
+          "fields": {
+            "day": {
+              "type": "number",
+              "placeholder": "",
+              "required": false
+            },
+            "month": {
+              "type": "select",
+              "placeholder": "",
+              "required": false
+            },
+            "year": {
+              "type": "number",
+              "placeholder": "",
+              "required": false
+            }
+          },
+          "dayFirst": false,
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "validate": {
+            "custom": ""
+          },
+          "type": "day",
+          "labelPosition": "top",
+          "inputsLabelPosition": "top",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "inputType": "text",
+          "inputMask": "",
+          "label": "Currency",
+          "key": "page2Currency",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "defaultValue": "",
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "delimiter": true,
+          "decimalLimit": 2,
+          "requireDecimal": true,
+          "validate": {
+            "required": false,
+            "multiple": "",
+            "custom": ""
+          },
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "type": "currency",
+          "labelPosition": "top",
+          "tags": [],
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": false,
+          "inputType": "password",
+          "label": "Password",
+          "key": "page2Password",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "protected": true,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "type": "password",
+          "labelPosition": "top",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {},
+          "tabindex": "skdangbgr@gmail.com"
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "inputType": "tel",
+          "inputMask": "(999) 999-9999",
+          "label": "Phone Number",
+          "key": "page2PhoneNumber",
+          "placeholder": "",
+          "prefix": "",
+          "suffix": "",
+          "multiple": false,
+          "protected": false,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "defaultValue": "",
+          "clearOnHide": true,
+          "validate": {
+            "required": false
+          },
+          "type": "phoneNumber",
+          "labelPosition": "top",
+          "inputFormat": "plain",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "label": "Submit",
+          "tableView": false,
+          "key": "page2Submit",
+          "size": "md",
+          "leftIcon": "",
+          "rightIcon": "",
+          "block": false,
+          "action": "submit",
+          "disableOnInvalid": false,
+          "theme": "primary",
+          "type": "button",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        }
+      ],
+      "input": false,
+      "key": "page2",
+      "clearOnHide": false,
+      "theme": "default",
+      "tableView": false,
+      "hideLabel": false
+    },
+    {
+      "type": "panel",
+      "title": "Page 3",
+      "isNew": false,
+      "components": [
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "label": "Address",
+          "key": "page3Address",
+          "placeholder": "",
+          "multiple": false,
+          "protected": false,
+          "clearOnHide": true,
+          "unique": false,
+          "persistent": true,
+          "hidden": false,
+          "map": {
+            "region": "",
+            "key": ""
+          },
+          "validate": {
+            "required": false
+          },
+          "type": "address",
+          "labelPosition": "top",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        },
+        {
+          "autofocus": false,
+          "input": true,
+          "tableView": true,
+          "label": "Day",
+          "key": "page3Day",
+          "fields": {
+            "day": {
+              "type": "number",
+              "placeholder": "",
+              "required": false
+            },
+            "month": {
+              "type": "select",
+              "placeholder": "",
+              "required": false
+            },
+            "year": {
+              "type": "number",
+              "placeholder": "",
+              "required": false
+            }
+          },
+          "dayFirst": false,
+          "protected": false,
+          "persistent": true,
+          "hidden": false,
+          "clearOnHide": true,
+          "validate": {
+            "custom": ""
+          },
+          "type": "day",
+          "labelPosition": "top",
+          "inputsLabelPosition": "top",
+          "tags": [],
+          "conditional": {
+            "show": "",
+            "when": null,
+            "eq": ""
+          },
+          "properties": {}
+        }
+      ],
+      "input": false,
+      "key": "page3",
+      "clearOnHide": false,
+      "theme": "default",
+      "tableView": false,
+      "hideLabel": false
+    },
+    {
+      "autofocus": false,
+      "input": true,
+      "label": "Submit",
+      "tableView": false,
+      "key": "submit",
+      "size": "md",
+      "leftIcon": "",
+      "rightIcon": "",
+      "block": false,
+      "action": "submit",
+      "disableOnInvalid": false,
+      "theme": "primary",
+      "type": "button"
+    }
+  ],
+  "revisions": "",
+  "_vid": 0,
+  "_id": "5b352cb2abee9b795a37f6a1",
+  "title": "tet2",
+  "display": "wizard",
+  "access": [
+    {
+      "roles": [
+        "5b3527030e20227db8e11194",
+        "5b3527030e20226849e11195",
+        "5b3527030e20227b30e11196"
+      ],
+      "type": "read_all"
+    }
+  ],
+  "submissionAccess": [],
+  "settings": {},
+  "path": "tedt",
+  "name": "tet2",
+  "project": "5b3527030e20229838e11193",
+  "created": "2018-06-28T18:45:06.016Z",
+  "modified": "2018-06-28T18:45:06.043Z",
+  "machineName": "jotdrowjdldgxda:tet2"
+}

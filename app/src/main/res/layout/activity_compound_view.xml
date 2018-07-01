@@ -7,18 +7,32 @@
     android:orientation="vertical"
     tools:context=".compoundview.CompoundViewActivity">
 
-    <skd.app.androidfeatures.compoundview.CompoundWidget
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <skd.app.androidfeatures.compoundview.DropDown
+        android:id="@+id/cw1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </skd.app.androidfeatures.compoundview.CompoundWidget>
+    </skd.app.androidfeatures.compoundview.DropDown>
 
 
-    <skd.app.androidfeatures.compoundview.CompoundWidget
+    <skd.app.androidfeatures.compoundview.DropDown
+        android:id="@+id/cw2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </skd.app.androidfeatures.compoundview.CompoundWidget>
+    </skd.app.androidfeatures.compoundview.DropDown>
 
+    <skd.app.androidfeatures.compoundview.DropDown
+        android:id="@+id/cw3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </skd.app.androidfeatures.compoundview.DropDown>
 
 </LinearLayout>
