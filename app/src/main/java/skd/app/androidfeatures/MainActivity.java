@@ -15,6 +15,7 @@ import skd.app.androidfeatures.jsonReader.JsonReader;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
 import skd.app.androidfeatures.pagerwizard.PagerWizard;
+import skd.app.androidfeatures.pagerwizard.WizardActivity;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("PagerWizard",PagerWizard.class));
         menuList.add(new MenuModel("DropDown", DropdownS.class));
         menuList.add(new MenuModel("JSON Reader", JsonReader.class));
+        menuList.add(new MenuModel("Wizard Fragment", WizardActivity.class));
 
 
         mAdapter = new MenuAdapter(menuList);

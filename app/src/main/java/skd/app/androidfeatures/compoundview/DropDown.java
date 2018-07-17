@@ -2,6 +2,7 @@ package skd.app.androidfeatures.compoundview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import skd.app.androidfeatures.R;
-import skd.app.androidfeatures.dropdowns.DropdownS;
 
 public class DropDown extends LinearLayout implements AdapterView.OnItemSelectedListener,ICompoundControl {
 
@@ -28,6 +28,7 @@ public class DropDown extends LinearLayout implements AdapterView.OnItemSelected
     HashMap<String,ArrayList<String>> masterData =new HashMap<>();
     DropDown childDropDown;
     public String Key;
+    public String label = "textView";
 
     public String selectedValue;
 
@@ -47,23 +48,38 @@ public class DropDown extends LinearLayout implements AdapterView.OnItemSelected
 
     public DropDown(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initializeViews(context);
         mContext=context;
+        TypedArray typedArray;
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.compoundview);
+        label = typedArray.getString(R.styleable.compoundview_label);
+        typedArray.recycle();
+        initializeViews(context);
+
 
     }
 
     public DropDown(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initializeViews(context);
         mContext=context;
+        TypedArray typedArray;
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.compoundview);
+        label = typedArray.getString(R.styleable.compoundview_label);
+        typedArray.recycle();
+        initializeViews(context);
+
 
     }
 
     @TargetApi(21)
     public DropDown(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initializeViews(context);
         mContext=context;
+        TypedArray typedArray;
+        typedArray = context.obtainStyledAttributes(attrs, R.styleable.compoundview);
+        label = typedArray.getString(R.styleable.compoundview_label);
+        typedArray.recycle();
+        initializeViews(context);
+
 
     }
 
@@ -77,7 +93,8 @@ public class DropDown extends LinearLayout implements AdapterView.OnItemSelected
        View view =  inflater.inflate(R.layout.compound_widget, this);
        textView = (TextView) view.findViewById(R.id.label);
        spinner = (Spinner) view.findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(this);
+       spinner.setOnItemSelectedListener(this);
+       textView.setText(label);
 
     }
 
@@ -145,6 +162,13 @@ public class DropDown extends LinearLayout implements AdapterView.OnItemSelected
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+        textView.setText(label);
 
     }
 }

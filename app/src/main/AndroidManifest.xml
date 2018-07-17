@@ -42,6 +42,8 @@
         <activity android:name=".dropdowns.DropdownS" />
         <activity android:name=".pagerwizard.PagerWizard" />
         <activity android:name=".jsonReader.JsonReader"></activity>
+        <activity android:name=".pagerwizard.WizardActivity"></activity>
+
     </application>
 
 </manifest>
