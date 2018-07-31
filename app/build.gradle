@@ -28,7 +28,10 @@ dependencies {
     //Recycler view library -- its version should be similar as appcompact.
     // It can also be used as
     //compile 'com.android.support:recyclerview-v7:25.+'
-
+    compile('io.socket:socket.io-client:1.0.0') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
 
     compile 'com.mikepenz:fastadapter-extensions:2.6.3@aar'
     compile 'com.mikepenz:materialize:1.0.3@aar'

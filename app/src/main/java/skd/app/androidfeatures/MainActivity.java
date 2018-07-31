@@ -15,8 +15,10 @@ import skd.app.androidfeatures.jsonReader.JsonReader;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
 import skd.app.androidfeatures.pagerwizard.PagerWizard;
+import skd.app.androidfeatures.pagerwizard.SimpleWizard;
 import skd.app.androidfeatures.pagerwizard.WizardActivity;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
+import skd.app.androidfeatures.sokcetdemo.SocketTest;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("DropDown", DropdownS.class));
         menuList.add(new MenuModel("JSON Reader", JsonReader.class));
         menuList.add(new MenuModel("Wizard Fragment", WizardActivity.class));
+        menuList.add(new MenuModel("Socket Test", SocketTest.class));
+        menuList.add(new MenuModel("Simple Wizard", SimpleWizard.class));
+
+
 
 
         mAdapter = new MenuAdapter(menuList);
