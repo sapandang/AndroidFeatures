@@ -12,13 +12,19 @@ import skd.app.androidfeatures.dropdowns.DropdownS;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
 import skd.app.androidfeatures.jsonReader.JsonReader;
+import skd.app.androidfeatures.maps.LocationPickerTest;
+import skd.app.androidfeatures.maps.MapsActivityTest;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
 import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.pagerwizard.SimpleWizard;
 import skd.app.androidfeatures.pagerwizard.WizardActivity;
+import skd.app.androidfeatures.sRecylerView.MultiSelectionRecycler;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
+import skd.app.androidfeatures.sRecylerView.SimpleRecycler;
+import skd.app.androidfeatures.sRecylerView.SingleSelectRecycler;
 import skd.app.androidfeatures.sokcetdemo.SocketTest;
+import skd.app.androidfeatures.toolbarTest.ToolbarTest;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("Wizard Fragment", WizardActivity.class));
         menuList.add(new MenuModel("Socket Test", SocketTest.class));
         menuList.add(new MenuModel("Simple Wizard", SimpleWizard.class));
+        menuList.add(new MenuModel("Multi Selection Recycler", MultiSelectionRecycler.class));
+        menuList.add(new MenuModel("Single Select Recycler", SingleSelectRecycler.class));
+        menuList.add(new MenuModel("Simple Recycler view", SimpleRecycler.class));
+        menuList.add(new MenuModel("Location Picker", LocationPickerTest.class));
+        menuList.add(new MenuModel("Map Test ", MapsActivityTest.class));
+        menuList.add(new MenuModel("Toolbar Test ", ToolbarTest.class));
 
 
 

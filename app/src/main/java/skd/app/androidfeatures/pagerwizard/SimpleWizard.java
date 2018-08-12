@@ -6,12 +6,14 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import skd.app.androidfeatures.R;
+import skd.app.androidfeatures.viewPagerDemo.PagerItem;
 import skd.app.androidfeatures.viewPagerDemo.ZoomOutPageTransformer;
 
 public class SimpleWizard extends AppCompatActivity {
@@ -36,8 +38,31 @@ public class SimpleWizard extends AppCompatActivity {
 
         //data init
         fragmentsHolder.add(new SimpleFragment1());
+        fragmentsHolder.add(new SimpleFragment1());
+        fragmentsHolder.add(new SimpleFragment1());
 
         //handllers
+        //setup button listner
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    //move to next page
+                    mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+
+
+            }
+        });
+
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //move to previous page
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+
+            }
+        });
 
 
         //setup the pager

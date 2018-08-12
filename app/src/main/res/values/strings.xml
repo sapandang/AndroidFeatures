@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android Features</string>
+    <string name="title_activity_maps_test">Map</string>
 </resources>

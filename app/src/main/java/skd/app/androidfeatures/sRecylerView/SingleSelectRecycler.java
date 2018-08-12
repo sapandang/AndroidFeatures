@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import skd.app.androidfeatures.R;
 
-public class MultiSelectionRecycler extends AppCompatActivity {
+public class SingleSelectRecycler extends AppCompatActivity {
 
     public static Context context;
     //Below are the componets which are required by the Recycler view
@@ -21,8 +21,15 @@ public class MultiSelectionRecycler extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multi_selection_recycler);
+        setContentView(R.layout.activity_single_select_recycler);
+
         context = this;
+
+        //set up dummy model
+       ArrayList<SelectDataModel> selectDataModelsArrary =  new ArrayList<SelectDataModel>();
+        for (int i=0;i<1000;i++) {
+            selectDataModelsArrary.add(new SelectDataModel());
+        }
 
         //Find the Recycler view
         recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view); //got the recycler view from the layout
@@ -36,9 +43,9 @@ public class MultiSelectionRecycler extends AppCompatActivity {
         //set the data adapter
         //Adapter contain the Data Which need to be shown in the view
         // mAdapter = new RvDataAdpt();
-        mAdapter = new MultiDataSelAdapter(new ArrayList<SelectDataModel>());
+        mAdapter = new SingleDataSelAdapter(selectDataModelsArrary);
         recyclerView.setAdapter(mAdapter);
-        
+
 
     }
 }
