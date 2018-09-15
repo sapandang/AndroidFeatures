@@ -10,6 +10,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+
     }
     buildTypes {
         release {
@@ -41,11 +44,30 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:recyclerview-v7:27.0.0'
     compile 'com.android.support:design:27.0.0'
-    implementation 'com.karumi:dexter:5.0.0'
+    implementation "com.android.support:support-annotations:27.0.0"
 
-    implementation "androidx.appcompat:appcompat:1.0.0-rc01"
+    implementation("com.mikepenz:materialdrawer:6.0.9@aar") {
+        transitive = true
+    }
+
+    compile 'me.tankery.lib:permission-requester:1.1.0' //better library for permission
+    implementation 'com.karumi:dexter:5.0.0' //library not needed
+
+    //ANDROID X DEPENDENCY --> Causes Conflicts
+    /* implementation "androidx.appcompat:appcompat:1.0.0-rc01"
     implementation "androidx.recyclerview:recyclerview:1.0.0-rc01"
     implementation "androidx.annotation:annotation:1.0.0-rc01"
-    implementation "com.google.android.material:material:1.0.0-rc01"
+    implementation "com.google.android.material:material:1.0.0-rc01"*/
+// https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation 'com.android.support:multidex:1.0.3'
+    compile("com.hypertrack.core:android:0.8.3@aar") {
+        transitive = true;
+        exclude group: 'com.google.android.gms', module: 'play-services'
 
+    }
+    compile 'com.google.android.gms:play-services-gcm:15.0.0'
+    compile 'com.google.android.gms:play-services-location:15.0.0'
+    compile 'com.google.android.gms:play-services-maps:15.0.0'
+    compile 'com.google.android.gms:play-services-places:15.0.0'
 }

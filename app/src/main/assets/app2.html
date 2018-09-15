@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Vue app</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+    <input v-model="message">
+    <button v-on:click="addtext">Reverse Message</button>
+    <img v-bind:src="imgscr" alt="Smiley face" height="42" width="42">
+    <input v-model="imgscr">
+
+
+</div>
+
+<script>
+
+
+  var t_data={ text: 'from internal script' };
+
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+       todos: [
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue' },
+      { text: 'Build something awesome' }
+    ],
+	imgscr: 'file:///storage/E6CC-170A/movies/Beyond The Woods (2018) [WEBRip] [720p] [YTS.AM]/www.YTS.AM.jpg'
+	,
+	 message: 'Hello Vue!'
+      },
+	   methods: {
+		addtext: function () {
+      this.todos.push( { text: this.message });
+    }
+  },
+  created: function () {
+    // `this` points to the vm instance
+    console.log('a is: ' + this.todos)
+	this.todos.push(t_data);
+	  var dt = AndroidInterface.getData();
+	 this.todos.push({ text: dt });
+  }
+    })
+	
+   
+	
+  </script>
+</body>
+</html>

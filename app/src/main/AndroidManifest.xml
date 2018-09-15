@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.location.network"
@@ -86,7 +88,15 @@
         <activity
             android:name=".maps.MapsActivityTest"
             android:label="@string/title_activity_maps_test" />
-        <activity android:name=".toolbarTest.ToolbarTest"></activity>
+        <activity android:name=".toolbarTest.ToolbarTest" />
+        <activity android:name=".permissionTest.DexterPermissionTest" />
+        <activity android:name=".materialDrawerTest.MaterialDrawerTest" />
+        <activity android:name=".webviewTest.WebViewTest" />
+        <activity android:name=".forms.MainForm" />
+        <activity android:name=".forms.AddForm" />
+        <activity android:name=".forms.EditForm" />
+        <activity android:name=".locationTest.LocationTracker" />
+        <activity android:name=".groovyTest.GroovyTest"></activity>
     </application>
 
 </manifest>

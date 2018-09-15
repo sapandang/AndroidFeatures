@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+    <link rel="stylesheet" href="js/font.css">
+    <link rel="stylesheet" href="js/vue-material.min.css">
+    <link rel="stylesheet" href="js/default.css">
+	  <script src="js/vue.js"></script>
+    <script src="js/vue-material.min.js"></script>
+	
+	<style>
+ .md-radio {
+    display: flex;
+  }
+  .md-checkbox{
+      display: flex;
+  }
+  .md-toolbar{
+  position:fixed;
+  }
+</style>
+	
+  </head>
+
+  <body>
+    <div id="app">
+     
+	  <md-toolbar class="md-accent" md-elevation="1">
+      <h3 class="md-title" style="flex: 1">Title</h3>
+      <md-button @click.prevent="prev()">Previous</md-button>
+      <md-button v-if="step < finishStep" @click.prevent="next()" class="md-primary">Next</md-button>
+	  <md-button v-if="step === finishStep" @click.prevent="finish()" class="md-primary">Finish</md-button>
+
+    </md-toolbar>
+	 
+	<md-card v-if="step === 1">
+      <md-card-header>
+        <div class="md-title">The following options can be applied to all radios:
+step 1
+</div>
+      </md-card-header>
+
+      <md-card-content>
+	<md-radio v-model="formData.radio" value="my-radio" >Mydata</md-radio>
+    <md-radio v-model="formData.radio" value="my-radio2">mydata</md-radio>
+    <md-radio v-model="formData.radio" value="my-radio3">mydata</md-radio>
+	 <md-radio v-model="formData.radio" value="my-radio4">mydata</md-radio>
+	  <md-radio v-model="formData.radio" value="my-radio5">mydata</md-radio>
+	   <md-radio v-model="formData.radio" value="my-radio6">mydata</md-radio>
+
+	</md-card-content>
+
+     
+    </md-card>
+	
+	<md-card v-if="step === 2">
+      <md-card-header>
+        <div class="md-title">Card at step 2</div>
+      </md-card-header>
+
+      <md-card-content>
+
+	<md-checkbox v-model="formData.checkbox" value="1">Array</md-checkbox>
+    <md-checkbox v-model="formData.checkbox" value="2">Array</md-checkbox>
+    <md-checkbox v-model="formData.checkbox" value="3">Array</md-checkbox>
+    <md-checkbox v-model="formData.checkbox" value="4">Array</md-checkbox>
+    <md-checkbox v-model="formData.checkbox" value="5">Array</md-checkbox>
+      </md-card-content>
+
+     
+    </md-card>
+	
+	<md-card>
+      <md-card-header>
+        <div class="md-title">Debug Card</div>
+      </md-card-header>
+
+      <md-card-content>
+		step : {{step}} <br/>
+		radio: {{ formData.radio }} </br>
+		checkbox : {{ formData.checkbox }}
+
+      </md-card-content>     
+    </md-card>
+	
+    </div>
+
+  
+    <script>
+      Vue.use(VueMaterial.default)
+
+	    var t_data='{"radio":"my-radio4","checkbox":["4"]}';
+
+	  
+	  
+      new Vue({
+        el: '#app',
+		data:{
+			step:1,
+			finishStep:3,
+			formData:{
+			 radio: false,
+			 checkbox:[]
+			}
+		},
+		methods:{
+		  prev() {
+		  if(this.step >1){
+      this.step--;
+	  }
+    },
+    next() {
+      this.step++;
+    },
+	finish(){
+		            AndroidInterface.showToast(JSON.stringify(this.formData));
+                    AndroidInterface.saveData(JSON.stringify(this.formData));
+		
+		}
+		},
+	 created: function () {
+    // `this` points to the vm instance
+    console.log('a is: ' + this.formData)
+	this.formData=JSON.parse(AndroidInterface.getData());
+  }	
+		
+		
+      })
+
+       function showAlert(msg)
+        {
+        alert(msg);
+        }
+
+    </script>
+  </body>
+</html>

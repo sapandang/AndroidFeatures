@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>jQuery Mobile Panel - Hongkiat.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" type="text/css" href="css/grid-menu-style.css" />
+
+       
+
+
+<script src="js/jquery.js"></script>
+
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+<script src="js/questions.js"></script>
+
+ 
+<style>
+.ui-collapsible-set {
+margin: 0 0;
+}
+
+.ui-page .ui-footer {
+	box-sizing: border-box;
+}
+.ui-controlgroup a.ui-btn{
+	display:block;
+}
+
+.ui-content .ui-btn { white-space: pre; }
+
+</style>
+ <script type="text/javascript">
+	//============================= XDK Functions
+	// Wait for device API libraries to load
+        //
+     
+        function onLoad() {
+            
+           document.addEventListener("deviceready", onDeviceReady, false);
+              intel.xdk.device.addVirtualPage(); 
+        }
+
+       // Admob API
+        function onDeviceReady() {
+            admob.createBannerView({publisherId: "ca-app-pub-3940256099942544/6300978111"});
+           // Register the event listener
+              intel.xdk.device.addVirtualPage(); 
+           document.addEventListener("backbutton", onBackKeyDown, false);
+        }
+
+        // Handle the back button
+        //
+        function onBackKeyDown() {
+           // Handle the back button
+              intel.xdk.device.addVirtualPage(); 
+            	alert("Thank You For Using");
+        }
+	document.addEventListener("intel.xdk.device.ready",function() {
+
+    //start grabbing the Android hardware back button
+    intel.xdk.device.addVirtualPage(); 
+    
+},false);
+
+        
+document.addEventListener("intel.xdk.device.hardware.back", function() {
+    
+    //continue to grab the back button
+    intel.xdk.device.addVirtualPage(); 
+   // alert("Hello! I am an alert box!!");
+  // CONFIRM REQUIRES ONE ARGUMENT
+	var message = "Are you sure you want to exit ??";
+
+	// CONFIRM IS BOOLEAN. THAT MEANS THAT
+	// IT RETURNS TRUE IF 'OK' IS CLICKED
+	// OTHERWISE IT RETURN FALSE
+	var return_value = confirm(message);
+
+
+
+	// TEST TO SEE IF TRUE|FALSE RETURNED
+	if ( return_value === true ) {
+		// YOUR 'OK' SCRIPT GOES HERE
+		alert("Thank you for using this application :)");
+         navigator.app.exitApp();
+	} else {
+		// YOUR 'CANCEL' SCRIPT GOES HERE
+		
+	}
+    
+}, false); 
+	
+	
+	//============================	END
+	
+	</script>
+</head>
+
+<body>
+	 <script type="text/javascript">
+	
+
+	 //=====Variable
+var quesPapers = paper1 ; // this will point to the question papers //set the initial to paper 1
+							// paper1 is the JSON object present int the question.js -> this file has been included above
+var quesid=0;	//current question 
+var queslimit= quesPapers.length-1;  //get the total question present -1 since index start from 0
+var sartup=0;   // if app started 1=yes
+var score=0;	//score
+var ansMode= 0; // switch to ansMode if 1
+
+// get the question
+//--------------create answer array
+// not answer = null , answerd = index
+var anstrack =[];  //this array is used to keep the track of answer entered by user i.e to to check which radio button was selected
+console.log("arraary length "+anstrack.length);	
+//---------------
+function ansassign(num)
+{
+anstrack[quesid] =num;
+
+}
+
+// the below function has been deprecated as it does not do anything
+function displayarr()
+{
+textc='';
+for (index = 0; index < anstrack.length; index++) {
+        textc += "<li>" + anstrack[index] + "</li>";
+    }
+    textc += "</ul>";
+    document.getElementById("arl").innerHTML = textc;
+
+}
+
+//This function get the question from the array and display it to the users
+function getQues()
+{
+console.log("queslimit "+queslimit);	
+console.log("quid "+quesid);
+   document.getElementById("data").innerHTML =
+   quesPapers[quesid].question;
+   
+   // display question number
+   //$( "#quesPanel" ).collapsible( "option", "heading", "#quesNoLabel" );
+	
+    $('#quesPanel h4.section_title').find('.ui-btn').text('Question '+(quesid+1)+'/'+(quesPapers.length));
+    $('#quesPanel').collapsible({refresh: true});
+
+   
+   //display answer
+     document.getElementById("q1").innerHTML =
+     quesPapers[quesid].answer[0];
+	 document.getElementById("q2").innerHTML =
+     quesPapers[quesid].answer[1];
+	 document.getElementById("q3").innerHTML =
+     quesPapers[quesid].answer[2];
+	 document.getElementById("q4").innerHTML =
+     quesPapers[quesid].answer[3];
+	 
+	// uncheck radio button
+	 document.getElementById("quest1").checked = false;
+	 document.getElementById("quest2").checked = false;
+	 document.getElementById("quest3").checked = false;
+	 document.getElementById("quest4").checked = false;
+   // display answered value	
+   
+   
+   //set default color
+   document.getElementById("q1").style.background ="#f9f9f9";
+    document.getElementById("q2").style.background ="#f9f9f9";
+	 document.getElementById("q3").style.background ="#f9f9f9";
+   document.getElementById("q4").style.background ="#f9f9f9";
+
+   
+   
+   switch(anstrack[quesid])
+   {
+	case 0:
+		document.getElementById("quest1").checked = true;
+		break;
+	case 1:
+		document.getElementById("quest2").checked = true;
+		break;	
+	case 2:
+		document.getElementById("quest3").checked = true;
+		break;
+	case 3:
+		document.getElementById("quest4").checked = true;
+		break;	
+	default : break;
+   }
+   
+   // answer mode
+   //document.getElementById("p2").style.color = "blue";
+   
+   if (ansMode == 1)
+   {
+   // change finish button name and onclick event
+   document.getElementById("finish").innerHTML = "Back To Papers";
+ //  document.getElementById("finish").onclick = backToPaper;
+   
+   console.log("consoled  "+ quesPapers[quesid].correct);
+	switch( quesPapers[quesid].correct)
+   {
+	case '0':
+	   
+		document.getElementById("q1").style.background ="#7BEF6E";
+		break;
+	case '1':
+	 console.log("0 ans");
+		document.getElementById("q2").style.background ="#7BEF6E";
+		break;	
+	case '2':
+		document.getElementById("q3").style.background ="#7BEF6E";
+		break;
+	case '3':
+		document.getElementById("q4").style.background ="#7BEF6E";
+		break;	
+	default : break;
+   }
+   
+   
+   }
+   
+   
+	
+	//check quesstsion upper and lower limit
+		if(quesid == 0)	// lower limit
+			{
+				//disable back button
+				document.getElementById("back").disabled = true; 
+				//enable next button
+				document.getElementById("next").disabled = false; 
+				document.getElementById("finish").style.visibility = "hidden";
+			}	
+		else
+			{
+				document.getElementById("back").disabled = false; 
+				document.getElementById("next").disabled = false; 
+				document.getElementById("finish").style.visibility = "hidden";
+			}
+		if(quesid==queslimit) //upper limit	
+			{				
+				//enable back button
+				document.getElementById("back").disabled = false; 
+				//diable next button
+				document.getElementById("next").disabled = true; 
+				document.getElementById("finish").style.visibility = "visible";
+			}
+		
+	// refresh radio button status
+  $('input[type="radio"]').checkboxradio('refresh');
+}
+
+// move to next question
+function next()
+{
+
+++quesid;
+
+getQues();
+//quesid++; //increment question ID
+
+}
+
+//move to previous question
+function  back()
+{
+if(quesid==queslimit)
+{
+
+}
+	--quesid;
+	console.log("backed "+quesid);
+	getQues();
+}
+
+//This function is called when user click the paper present on the dashboard
+/// this function will load new papers  navigate
+// it is the function required to initalise the variables
+function paperDisp(num)
+{
+//quesPapers = num;
+//$.mobile.navigate( "#test" );
+ quesPapers = num ; // this will point to the question papers
+ quesid=0;	//current question 
+ queslimit= num.length-1;
+ sartup=0;   // if app started 1=yes
+ score=0;	//score
+ ansMode= 0; // switch to ansMode if 1
+
+}
+
+
+//move to the dashboard
+function backToPaper()
+{
+$.mobile.navigate( "#one" );
+//alert("I am an alert box!");
+location.reload(); // reload page
+}
+
+// Finish the question set which user is answering
+function finish()
+{
+
+	// reload full page 
+	if (ansMode == 1)
+	{
+	backToPaper();
+	return;
+	//$.mobile.navigate( "#one" );
+	//location.reload();
+	//widows.location = "#one";
+	}
+score=0;
+maxScore = quesPapers.length;
+	for (index = 0; index < quesPapers.length; index++) {
+        
+		if(anstrack[index]!=null)
+		{
+			if(quesPapers[index].correct == anstrack[index])
+			{ score++;}
+		}
+		// document.getElementById("sor").innerHTML = "score "+score;	
+    }
+	
+	
+	// hide elements
+	document.getElementById("navControl").style.display = "none";
+	document.getElementById("ansPanel").style.display = "none";
+	document.getElementById("quesPanel").style.display = "none";
+	document.getElementById("finish").style.visibility = "hidden";
+
+	//show elem
+	document.getElementById("Information").style.display = "block";
+	document.getElementById("viewAnswers").style.display = "block";
+
+	
+	//show score in info infoContent;
+	var myVariable = '<p style=\"text-align: center;\"><strong>Score : '+score+'<\/strong><\/p>\n\n<p style=\"text-align: center;\"><strong>Correct : '+score+'<\/strong><\/p>\n\n<p style=\"text-align: center;\"><strong>Incorrect : '+(maxScore-score)+'<\/strong><\/p>\n\n<p style=\"text-align: center;\">Click view answer to view the correct answers .Correct answers are hilighted in green and your selected answers are displayed.<\/p>\n\n<p style=\"text-align: center;\">To attend new click Papers from Side Menu<\/p>\n';
+	var dispScore = '<h3 style=\"text-align: center;\">\n\t<span style=\"font-family:courier new,courier,monospace;\"><span style=\"font-size:14px;\">Score'+ score + '<\/span><\/span><\/h3>\n<h3 style=\"text-align: center;\">\n\t<span style=\"font-size: 12px;\">Correct &nbsp;==<\/span><\/h3>\n<h3 style=\"text-align: center;\">\n\tWrong --<\/h3>';
+	document.getElementById("infoContent").innerHTML = "";
+	document.getElementById("infoContent").innerHTML = myVariable;
+}
+
+
+// This function initalise the functions required
+// this is called when user click the start button
+function inits()
+{// display first question
+
+getQues();
+//display Nav controls and ques and ans panel
+//hide start buttonand info panel
+
+document.getElementById("Information").style.display = "none";
+document.getElementById("startTest").style.display = "none";
+
+document.getElementById("navControl").style.display = "block";
+document.getElementById("ansPanel").style.display = "block";
+document.getElementById("quesPanel").style.display= "block";
+
+//$("quesPanel").hide();
+
+}
+
+
+//this function enable the answer mode enabling 
+function viewAns()
+{
+ ansMode= 1; // switch to ansMode if 1
+ 
+ //hide ellements viewAnswers
+  document.getElementById("Information").style.display = "none";
+  document.getElementById("viewAnswers").style.display = "none";
+  
+  //show elements
+  
+ document.getElementById("navControl").style.display = "block";
+ document.getElementById("ansPanel").style.display = "block";
+ document.getElementById("quesPanel").style.display= "block";
+	
+		quesid=0;	//current question 
+		getQues();
+	
+}
+
+
+	 </script>
+	 
+<!--- page 1 ----->	
+	
+	
+	
+	<div class="demo-wrapper" data-role="page" id="one" >
+	
+	
+	<!-- ABOUT BOX -->
+	<!-- Here is the code which shows about popup box modify the content to create your own -->	
+		<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all">
+			<div data-role="header" data-theme="a" class="ui-corner-top">
+				<h1>About</h1>
+			</div>
+			<div data-role="content" style="text-align:center" data-theme="d" class="ui-corner-bottom ui-content">
+				<h3 class="ui-title">ISTQB FOUNDATION <br> QUIZ V1.0</h3>
+				<p>This App is created to prepare for ISTQB Foundation Exam</p>
+				<p>The App contains sets of Papers that can used for prepration</p>
+			   <p>For query mail to <br> hexgears93@gmail.com</p>
+				<a href="#" data-role="button"  data-inline="true" data-rel="back" data-transition="flow" data-theme="b">OK</a>  
+			</div>
+		</div>
+<!-- ABOUT BOX  END-->
+	
+	
+		<!-- SIDE PANEL-->
+		<!-- below is the code which shows side panel menu modify to create your own -->
+		<div data-role="panel" id="homePanel" data-display="push" class="ui-panel ui-panel-position-left ui-panel-display-push ui-body-inherit ui-panel-animate ui-panel-open">
+		<div class="ui-panel-inner" ><ul data-role="listview" class="ui-listview">
+			<li data-icon="delete" class="ui-first-child"><a href="#" data-rel="close" class="ui-btn ui-btn-icon-right ui-icon-delete">Close</a></li>
+			<li class="ui-last-child"><a href="#popupDialog" data-rel="popup" data-position-to="window"  class="ui-btn ui-btn-icon-right ui-icon-carat-r">About</a></li>
+					
+		</ul><br> <h6 align="center"> For any Feedback mail to <br> hexgears93@gmail.com <h6> </div>
+		
+		
+	</div>
+	<!-- SIDE PANEL END -->
+	
+
+        
+		<!-- TITLE -->
+		<!-- Below code contain the tile of the application change to create your own -->
+			<div class="header" data-role="header"  >
+			<span class="open left"><a href="#homePanel">&#61641;</a></span>
+            <span class="title">ISTQB FOUNDATION</span>
+		<!-- TITLE END -->	
+			
+		</div>
+		
+		
+		
+<div class="content" data-role="content">
+<!---- dummy dialog
+		<a href="#popupDialog" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-theme="a">Dialog</a>
+----->
+		
+		
+	<div class="ui-grid-a"> <!-- menu-container --> 
+
+<!-- QUESTIONS PAGE -->
+<!-- BELOW CODE IS THE IMPORTANT ONE AS THIS CONTAIN HOW MANY PAPER WIIL BE DISPLAYED IN THE PAGE -->	
+	
+<!-- FIRST ROW --> 
+<!-- 1st elem -->
+<div class="ui-block-a">
+<div class="ui-bar ui-bar-a">
+<div class="menu-elem"> <a href="#test" onclick="paperDisp(paper1)">
+<div class="menu-img"> <img src="img/file_doc.png" width=64 height=64s> </div>
+<div class="menu-text"> Paper 1 </div>
+</a> </div>
+</div>
+</div>
+<!-- 2nd elem -->
+<div class="ui-block-b">
+<div class="ui-bar ui-bar-a">
+<div class="menu-elem"> <a href="#test" onclick="paperDisp(paper2)">
+<div class="menu-img"> <img src="img/file_doc.png" width=64 height=64> </div>
+<div class="menu-text"> paper 2 </div>
+</a> </div>
+</div>
+</div>
+
+
+<!-- THIRD ROW --> 
+<!-- 1st elem -->
+<div class="ui-block-a">
+<div class="ui-bar ui-bar-a">
+<div class="menu-elem"> <a href="#test" onclick="paperDisp(paper3)">
+<div class="menu-img"> <img src="img/file_doc.png" width=64 height=64> </div>
+<div class="menu-text"> Paper 3 </div>
+</a> </div>
+</div>
+</div>
+<!-- 2nd elem -->
+<div class="ui-block-b">
+<div class="ui-bar ui-bar-a">
+<div class="menu-elem"> <a href="#test" onclick="paperDisp(paper4)">
+<div class="menu-img"> <img src="img/file_doc.png" width=64 height=64> </div>
+<div class="menu-text"> Paper 4</div>
+</a> </div>
+</div>
+</div>
+
+
+
+<!-- SAMPEL PAPER -->
+<!-- UNCOMMENT THE BELOW CODE -->
+<!--
+<div class="ui-block-b">
+<div class="ui-bar ui-bar-a">
+<div class="menu-elem"> <a href="#test" onclick="paperDisp(paper4)">
+<div class="menu-img"> <img src="img/file_doc.png" width=64 height=64> </div>
+<div class="menu-text"> Paper 4</div>
+</a> </div>
+</div>
+</div>
+-->
+
+<!-- TO ADD MORE PAPER ADD ABOVE THIS TAG -->
+<!-- BLOCK END -->
+</div>
+<!-- menu container --> 
+
+
+
+
+        </div>
+    	
+		<!-- footer -->
+		<div class="footer" data-role="footer" data-position="fixed" data-tap-toggle="false"  >
+		
+		
+		<div data-role="controlgroup" data-inline="false" data-type="horizontal" data-tap-toggle="false"  data-mini="true" style="text-align:center">
+       	    
+        </div>
+		
+    </div>
+		
+	
+	</div>
+	
+<!---- end of page 1 ----->	
+	 
+	 
+<!-- THIS IS THE PAGE 2 WHICH SHOWS THE INSTRUCTION BEFORE ATTEMPTING THE TEST --->	 
+<!-------------- pge 2 ----------->
+	<div class="demo-wrapper" data-role="page" id="test">
+	<!------------- about box ----------------->
+	<!-- THE BELOW CODE CONTAIN THE ABOUT BOX -->
+	 <div data-role="popup" id="popupAbout" data-overlay-theme="a" data-theme="a" style="max-width:400px;" class="ui-corner-all">
+			<div data-role="header" data-theme="a" class="ui-corner-top">
+				<h1>About</h1>
+			</div>
+			<div data-role="content" style="text-align:center" data-theme="d" class="ui-corner-bottom ui-content">
+				<h3 class="ui-title">ISTQB FOUNDATION <br> QUIZ V1.0</h3>
+				<p>This App is created to prepare for ISTQB Foundation Exam</p>
+				<p>The App contains sets of Papers that can used for prepration</p>
+				<p>For query mail to <br> hexgears93@gmail.com</p>
+			   
+				<a href="#" data-role="button"  data-inline="true" data-rel="back" data-transition="flow" data-theme="b">OK</a>  
+			</div>
+		</div>
+	
+		<!-- CODE FOR THE SIDE PANEL -->
+		<div data-role="panel" id="panel-push" data-display="push" class="ui-panel ui-panel-position-left ui-panel-display-push ui-body-inherit ui-panel-animate ui-panel-open">
+		<div class="ui-panel-inner" ><ul data-role="listview" class="ui-listview">
+			<li data-icon="delete" class="ui-first-child"><a href="#" data-rel="close" class="ui-btn ui-btn-icon-right ui-icon-delete">Close</a></li>
+			<li><a  onclick="backToPaper()" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Papers</a></li>
+			<li class="ui-last-child"><a href="#popupAbout" data-rel="popup" data-position-to="window"  class="ui-btn ui-btn-icon-right ui-icon-carat-r">About</a></li>
+
+			</ul></div>
+		
+		<br> <h6 align="center"> For any Feedback mail to <br> hexgears93@gmail.com </h6> 
+	</div>
+		
+       
+		
+<div class="header" data-role="header"  >
+			<span class="open left"><a href="#panel-push">&#61641;</a></span>
+            <span class="title">ISTQB FOUNDATION</span>
+			
+		</div>
+		
+<div class="content" data-role="content">
+<!-- BELOW CODE SHOWS THE PAGE INSTRUCTION -->
+
+<div data-role="collapsible" id="Information" data-collapsed="false" data-collapsed-icon="false" data-expanded-icon="false" data-mini="true" >
+    <h4 style="text-align:center;">Information</h4>
+    <p id="infoContent" align="center">
+		
+		<span style="font-size:12px;"><span style="font-family:courier new,courier,monospace;">This Paper contains 40 question</span></span><br>
+		
+		<span style="font-size:12px;"><span style="font-family:courier new,courier,monospace;">To Finish test Press Finish button at last question</span></span><br>
+	
+		<span style="font-size:12px;"><span style="font-family:courier new,courier,monospace;">Press Start to start the test</span></span>
+     </p>
+</div>
+  <!-- PAGE INSTRUCTION END -->
+  
+		<div data-role="collapsible"  id="quesPanel" style="display:none;" data-collapsed="false" data-mini="true" data-iconpos="right" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+    <h4 class="section_title">Questions</h4>
+    <p id="data">Loading Questions.</p>
+</div>
+
+<!-- ANSWER PANEL -->
+<div data-role="collapsible" id="ansPanel" style="display:none;" data-collapsed="false" data-mini="true" data-iconpos="right" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+    <h4>Answers</h4>
+	<fieldset data-role="controlgroup" data-mini="true">        
+        <input type="radio" name="radio-choice-v-6" id="quest1" value="on" onclick="ansassign(0)">
+        <label id="q1" style="white-space: normal;"  for="quest1">One</label>
+        <input type="radio" name="radio-choice-v-6" id="quest2" value="off" onclick="ansassign(1)">
+        <label id="q2" style="white-space: normal;"  for="quest2">Two</label>
+        <input type="radio" name="radio-choice-v-6" id="quest3" value="other" onclick="ansassign(2)">
+        <label id="q3" style="white-space: normal;" for="quest3">Three</label>
+		<input type="radio" name="radio-choice-v-6" id="quest4" value="other" onclick="ansassign(3)">
+        <label id="q4" style="white-space: normal;" for="quest4">Four</label>
+    </fieldset>
+</div>
+
+
+<!--- PANEL END -->
+
+		<button  id ="startTest" onclick="inits()">Start</button> 
+		<button  id ="viewAnswers" style="display:none;" onclick="viewAns()">View Answers</button> 
+		
+
+
+
+        </div>
+    	
+		<!-- footer -->
+		<div class="footer" style="text-align: center;" data-role="footer" data-position="fixed" position="absolute" data-tap-toggle="false" >
+		
+		
+		<div style="float:right" data-role="controlgroup" data-inline="false" data-type="horizontal" data-mini="true" style="text-align:center">
+     
+		<button id="finish" style=" visibility:hidden;" onclick="finish()">Finish</button> 
+        </div> 
+		<!-- BACK NEXT BUTTON -->
+		<div id = "navControl" style="display:inline-block; display:none;" data-role="controlgroup" data-inline="false" data-type="horizontal" data-mini="true" style="text-align:center">
+        <button id="back" onclick="back()">back</button>
+		<button id="next" onclick="next()">Next</button> 
+        </div> 
+		<!---- END -->
+		
+		
+    </div>
+		
+	
+	</div>
+	<!----------------- end page 2----------->
+	
+	
+	
+	
+</body>
+</html>

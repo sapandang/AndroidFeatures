@@ -4,21 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.webkit.WebView;
 
 import java.util.ArrayList;
 
 import skd.app.androidfeatures.compoundview.CompoundViewActivity;
 import skd.app.androidfeatures.dropdowns.DropdownS;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
+import skd.app.androidfeatures.forms.MainForm;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
 import skd.app.androidfeatures.jsonReader.JsonReader;
+import skd.app.androidfeatures.locationTest.LocationTracker;
 import skd.app.androidfeatures.maps.LocationPickerTest;
 import skd.app.androidfeatures.maps.MapsActivityTest;
+import skd.app.androidfeatures.materialDrawerTest.MaterialDrawerTest;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
 import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.pagerwizard.SimpleWizard;
 import skd.app.androidfeatures.pagerwizard.WizardActivity;
+import skd.app.androidfeatures.permissionTest.DexterPermissionTest;
 import skd.app.androidfeatures.sRecylerView.MultiSelectionRecycler;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
 import skd.app.androidfeatures.sRecylerView.SimpleRecycler;
@@ -26,6 +31,7 @@ import skd.app.androidfeatures.sRecylerView.SingleSelectRecycler;
 import skd.app.androidfeatures.sokcetdemo.SocketTest;
 import skd.app.androidfeatures.toolbarTest.ToolbarTest;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
+import skd.app.androidfeatures.webviewTest.WebViewTest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("Location Picker", LocationPickerTest.class));
         menuList.add(new MenuModel("Map Test ", MapsActivityTest.class));
         menuList.add(new MenuModel("Toolbar Test ", ToolbarTest.class));
+        menuList.add(new MenuModel("Dexter Permission", DexterPermissionTest.class));
+        menuList.add(new MenuModel("Material Drawer Test", MaterialDrawerTest.class));
+        menuList.add(new MenuModel("WebView Test", WebViewTest.class));
+        menuList.add(new MenuModel("MainForm", MainForm.class));
+        menuList.add(new MenuModel("Location Tracker", LocationTracker.class));
 
 
 
