@@ -6,12 +6,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.webkit.WebView;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import java.util.ArrayList;
 
+import okhttp3.OkHttpClient;
 import skd.app.androidfeatures.compoundview.CompoundViewActivity;
+import skd.app.androidfeatures.downloadDemo.DownladActivity;
 import skd.app.androidfeatures.dropdowns.DropdownS;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
 import skd.app.androidfeatures.forms.MainForm;
+import skd.app.androidfeatures.groovyTest.GroovyTest;
 import skd.app.androidfeatures.inflatorDemo.InflatorActivity;
 import skd.app.androidfeatures.jsonReader.JsonReader;
 import skd.app.androidfeatures.locationTest.LocationTracker;
@@ -24,6 +30,7 @@ import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.pagerwizard.SimpleWizard;
 import skd.app.androidfeatures.pagerwizard.WizardActivity;
 import skd.app.androidfeatures.permissionTest.DexterPermissionTest;
+import skd.app.androidfeatures.rhinojsTest.RhinojsTest;
 import skd.app.androidfeatures.sRecylerView.MultiSelectionRecycler;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
 import skd.app.androidfeatures.sRecylerView.SimpleRecycler;
@@ -79,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("WebView Test", WebViewTest.class));
         menuList.add(new MenuModel("MainForm", MainForm.class));
         menuList.add(new MenuModel("Location Tracker", LocationTracker.class));
+        menuList.add(new MenuModel("Groovy Test", GroovyTest.class));
+        menuList.add(new MenuModel("RhinoJS Test", RhinojsTest.class));
+        menuList.add(new MenuModel("Download Test", DownladActivity.class));
 
 
 
@@ -86,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MenuAdapter(menuList);
 
         recyclerView.setAdapter(mAdapter);
-
+        Stetho.initializeWithDefaults(this);
+       /* OkHttpClient client = new OkHttpClient();
+        client.networkInterceptors().add(new StethoInterceptor());*/
     }
 }

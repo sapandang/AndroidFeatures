@@ -23,5 +23,11 @@
             android:layout_height="wrap_content"
             android:text="ViewForm" />
 
+        <Button
+            android:id="@+id/btn_draft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Draft" />
+
     </LinearLayout>
 </RelativeLayout>

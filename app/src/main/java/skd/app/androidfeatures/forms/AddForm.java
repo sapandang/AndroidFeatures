@@ -1,5 +1,7 @@
 package skd.app.androidfeatures.forms;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +17,7 @@ import static skd.app.androidfeatures.forms.MainForm.downloadFormsDir;
 public class AddForm extends AppCompatActivity {
 
     WebView webView;
-
+    Context mContext;
     //Parameter Data
     String valueFileName =null;
 
@@ -23,7 +25,7 @@ public class AddForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_form);
-
+        mContext=this;
         //get the bundle
         Bundle b = getIntent().getExtras();
         if(b!=null)
@@ -54,7 +56,22 @@ public class AddForm extends AppCompatActivity {
         webView.addJavascriptInterface(new WebAppInterface(this), "AndroidInterface"); // To call methods in Android from using js in the html, AndroidInterface.showToast, AndroidInterface.getAndroidVersion etc
 
         webView.setWebViewClient(new WebViewClient());
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            private ProgressDialog mProgress;
+
+            @Override
+            public void onProgressChanged(WebView view, int progress) {
+                if (mProgress == null) {
+                    mProgress = new ProgressDialog(mContext);
+                    mProgress.show();
+                }
+                mProgress.setMessage("Loading " + String.valueOf(progress) + "%");
+                if (progress == 100) {
+                    mProgress.dismiss();
+                    mProgress = null;
+                }
+            }
+        });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true);

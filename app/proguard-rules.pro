@@ -23,3 +23,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# stetho
++keep class com.facebook.stetho.** { *; }
+
+# rhino (javascript)
+-dontwarn org.mozilla.javascript.**
+-dontwarn org.mozilla.classfile.**
+-keep class org.mozilla.javascript.** { *; }
