@@ -33,11 +33,20 @@ public class DownladActivity extends AppCompatActivity {
         downloadbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(mContext,"Start",Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(mContext, "Start", Toast.LENGTH_SHORT).show();
-                DownloadUtils down = new DownloadUtils(mContext, "http://mirrors.jenkins.io/war-stable/latest/jenkins.war", "package.zip");
-                // DownloadUtils down = new DownloadUtils(mContext,"http://192.168.0.106/test/package.zip","package.zip");
-                down.startDownload();
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setView(R.layout.dialog_progress);
+                AlertDialog dialog = builder.create();
+                dialog.setCancelable(false);
+                dialog.show();
+*/
+           // progress.show();
+
+              // t.start();
+                        DownloadUtils down = new DownloadUtils(mContext,"http://mirrors.jenkins.io/war-stable/latest/jenkins.war","package.zip");
+                       // DownloadUtils down = new DownloadUtils(mContext,"http://192.168.0.106/test/package.zip","package.zip");
+                        down.startDownload();
 
 
             }

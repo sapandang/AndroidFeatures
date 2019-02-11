@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <uses-feature
         android:name="android.hardware.location.network"
@@ -29,6 +30,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <service android:name=".serviceDemo.DemoService" />
 
         <meta-data
@@ -81,7 +83,18 @@
         <activity android:name=".locationTest.LocationTracker" />
         <activity android:name=".groovyTest.GroovyTest" />
         <activity android:name=".rhinojsTest.RhinojsTest" />
-        <activity android:name=".downloadDemo.DownladActivity"></activity>
+        <activity android:name=".downloadDemo.DownladActivity" />
+        <activity android:name=".dialogsDemo.DialogActivity" />
+        <activity android:name=".serviceDemo.ServiceDemoActivity" />
+
+        <service
+            android:name=".serviceDemo.ServiceTest"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".serviceDemo.services.Service1"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

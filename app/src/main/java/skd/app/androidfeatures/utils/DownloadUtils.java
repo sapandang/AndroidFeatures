@@ -17,9 +17,11 @@ package skd.app.androidfeatures.utils;
  * limitations under the License.
  */
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
 
@@ -91,7 +93,7 @@ public final class DownloadUtils {
 
                     if (contentLength != -1) {
                         Log.wtf("SKDINFO", "" + (100 * bytesRead) / contentLength);
-                        progress.setProgress((int)((100 * bytesRead) / contentLength));
+                        progress.setProgress((int) ((100 * bytesRead) / contentLength));
                     }
                 }
             }
@@ -100,8 +102,8 @@ public final class DownloadUtils {
 
         //init okHttp client
         final OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(60, TimeUnit.MILLISECONDS)
-                .readTimeout(60,TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
                 .addNetworkInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
@@ -115,38 +117,36 @@ public final class DownloadUtils {
 
         //send the request and write the file
 
-            Log.wtf("SKDINFO", "Download Starting");
+        Log.wtf("SKDINFO", "Download Starting");
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Response response = client.newCall(request).execute();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = client.newCall(request).execute();
 
-                        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                    if (!response.isSuccessful())
+                        throw new IOException("Unexpected code " + response);
 
-                        //download Success now
-                        Log.wtf("SKDINFO", "Download Completed");
-                        FileUtils.copyInputStreamToFile(response.body().byteStream(), tmpFile);
-                        response.close(); //close reponse to avoid memory leak
-                        progress.dismiss();
-                    }catch (IOException e)
-                    {
-                        e.printStackTrace();
-                        progress.dismiss();
-
-                    }
-
+                    //download Success now
+                    Log.wtf("SKDINFO", "Download Completed");
+                    FileUtils.copyInputStreamToFile(response.body().byteStream(), tmpFile);
+                    response.close(); //close reponse to avoid memory leak
+                    progress.dismiss();
+                    downloadSuccess();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    progress.dismiss();
+                        downloadFail();
                 }
-            }).start();
 
-
-
+            }
+        }).start();
 
 
     }
 
-  public DownloadUtils(Context context, String fileUrl, String fileName) {
+    public DownloadUtils(Context context, String fileUrl, String fileName) {
         this.fileUrl = fileUrl;
         this.fileName = fileName;
         this.mContext = context;
@@ -156,7 +156,7 @@ public final class DownloadUtils {
         progress.setIndeterminate(false);
         progress.setCancelable(false);
 
-      Log.wtf("SKDINFO", "DownloadUtils" + fileName);
+        Log.wtf("SKDINFO", "DownloadUtils" + fileName);
 
     }
 
@@ -214,6 +214,28 @@ public final class DownloadUtils {
      */
     interface ProgressListener {
         void update(long bytesRead, long contentLength, boolean done);
+    }
+
+
+    public void downloadSuccess(){
+        ((Activity)mContext).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(mContext,"download Success",Toast.LENGTH_SHORT).show();
+
+            }
+        });    }
+
+    public void downloadFail()
+    {
+        ((Activity)mContext).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(mContext,"download Fail",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
 

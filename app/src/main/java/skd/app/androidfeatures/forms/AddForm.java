@@ -53,7 +53,7 @@ public class AddForm extends AppCompatActivity {
         webView.loadUrl("file:///android_asset/test3.html");
         //webView.loadUrl("file:///"+fileName);
 
-        webView.addJavascriptInterface(new WebAppInterface(this), "AndroidInterface"); // To call methods in Android from using js in the html, AndroidInterface.showToast, AndroidInterface.getAndroidVersion etc
+        webView.addJavascriptInterface(new WebAppInterface(this,webView), "AndroidInterface"); // To call methods in Android from using js in the html, AndroidInterface.showToast, AndroidInterface.getAndroidVersion etc
 
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient() {

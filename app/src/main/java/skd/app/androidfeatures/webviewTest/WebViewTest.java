@@ -22,12 +22,13 @@ public class WebViewTest extends AppCompatActivity {
          webView = (WebView)findViewById(R.id.wb);
 
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/test3.html");
+        webView.loadUrl("file:///android_asset/test1.html");
 
-        webView.addJavascriptInterface(new WebAppInterface(this), "AndroidInterface"); // To call methods in Android from using js in the html, AndroidInterface.showToast, AndroidInterface.getAndroidVersion etc
+        webView.addJavascriptInterface(new WebAppInterface(this,webView), "AndroidInterface"); // To call methods in Android from using js in the html, AndroidInterface.showToast, AndroidInterface.getAndroidVersion etc
 
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
+        webView.getSettings().setJavaScriptEnabled(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true);

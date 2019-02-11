@@ -4,15 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.webkit.WebView;
 
 import com.facebook.stetho.Stetho;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.util.ArrayList;
 
-import okhttp3.OkHttpClient;
 import skd.app.androidfeatures.compoundview.CompoundViewActivity;
+import skd.app.androidfeatures.dialogsDemo.DialogActivity;
 import skd.app.androidfeatures.downloadDemo.DownladActivity;
 import skd.app.androidfeatures.dropdowns.DropdownS;
 import skd.app.androidfeatures.fingerPrintDemo.FingerActivity;
@@ -26,6 +24,7 @@ import skd.app.androidfeatures.maps.MapsActivityTest;
 import skd.app.androidfeatures.materialDrawerTest.MaterialDrawerTest;
 import skd.app.androidfeatures.menu.MenuAdapter;
 import skd.app.androidfeatures.menu.MenuModel;
+import skd.app.androidfeatures.overlaydemo.OverlayActivity;
 import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.pagerwizard.SimpleWizard;
 import skd.app.androidfeatures.pagerwizard.WizardActivity;
@@ -35,6 +34,7 @@ import skd.app.androidfeatures.sRecylerView.MultiSelectionRecycler;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
 import skd.app.androidfeatures.sRecylerView.SimpleRecycler;
 import skd.app.androidfeatures.sRecylerView.SingleSelectRecycler;
+import skd.app.androidfeatures.serviceDemo.ServiceDemoActivity;
 import skd.app.androidfeatures.sokcetdemo.SocketTest;
 import skd.app.androidfeatures.toolbarTest.ToolbarTest;
 import skd.app.androidfeatures.viewPagerDemo.PagerActivity;
@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("Groovy Test", GroovyTest.class));
         menuList.add(new MenuModel("RhinoJS Test", RhinojsTest.class));
         menuList.add(new MenuModel("Download Test", DownladActivity.class));
+        menuList.add(new MenuModel("Dialog Test", DialogActivity.class));
+        menuList.add(new MenuModel("Overlay Test", OverlayActivity.class));
+        menuList.add(new MenuModel("Service Demo Test", ServiceDemoActivity.class));
+        //menuList.add(new MenuModel("image picker", ImagePicker.class));
 
 
 

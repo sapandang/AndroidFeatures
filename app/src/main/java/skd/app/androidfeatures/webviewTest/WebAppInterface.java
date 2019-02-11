@@ -1,9 +1,11 @@
 package skd.app.androidfeatures.webviewTest;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import org.apache.commons.io.FileUtils;
@@ -19,9 +21,11 @@ import skd.app.androidfeatures.forms.MainForm;
 public class WebAppInterface {
     Context mContext;
     String mValueFile=null;
+    WebView mWebView;
     // Instantiate the interface and set the context
-    public WebAppInterface(Context c ) {
+    public WebAppInterface(Context c,WebView webView ) {
         mContext = c;
+        this.mWebView=webView;
     }
 
     public WebAppInterface(Context c ,String valueFile) {
@@ -73,6 +77,18 @@ public class WebAppInterface {
             throw new RuntimeException("Error Creating file");
         }
 
+    }
+
+    @JavascriptInterface
+    public void testcallback(final String methodto)
+    {
+        ((Activity)mContext).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mWebView.loadUrl("javascript:"+methodto+"('BackButton Pressed')");
+
+            }
+        });
     }
 
 }
