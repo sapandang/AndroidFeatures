@@ -29,6 +29,7 @@ import skd.app.androidfeatures.pagerwizard.PagerWizard;
 import skd.app.androidfeatures.pagerwizard.SimpleWizard;
 import skd.app.androidfeatures.pagerwizard.WizardActivity;
 import skd.app.androidfeatures.permissionTest.DexterPermissionTest;
+import skd.app.androidfeatures.pickers.ImageSelector;
 import skd.app.androidfeatures.rhinojsTest.RhinojsTest;
 import skd.app.androidfeatures.sRecylerView.MultiSelectionRecycler;
 import skd.app.androidfeatures.sRecylerView.RecylerActivity;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuModel("Dialog Test", DialogActivity.class));
         menuList.add(new MenuModel("Overlay Test", OverlayActivity.class));
         menuList.add(new MenuModel("Service Demo Test", ServiceDemoActivity.class));
-        //menuList.add(new MenuModel("image picker", ImagePicker.class));
+        menuList.add(new MenuModel("image picker", ImageSelector.class));
 
 
 

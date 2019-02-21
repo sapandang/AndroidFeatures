@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.Toast;
 
 public class Service1 extends Service {
@@ -32,6 +33,20 @@ public class Service1 extends Service {
 
             }
         });
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.wtf("SKDINFO", "Service Loop ");
+                }
+            }
+        }).start();
     }
 
     @Override
