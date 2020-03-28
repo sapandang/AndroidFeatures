@@ -14,12 +14,12 @@ public class BlankActivity extends Activity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final Intent service2 = new Intent(this, Service2.class);
-        startService(service2);
-        final Intent tr = new Intent(this, MainActivity.class);
-        startActivity(tr);
-        finish();
-
+    final Intent service2 = new Intent(this, Service2.class);
+    startService(service2);
+    final Intent tr = new Intent(this, MainActivity.class);
+    startActivity(tr);
+       finish();
+    return;
 
     }
 }

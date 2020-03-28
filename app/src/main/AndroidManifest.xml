@@ -51,6 +51,13 @@
         </activity>
 
         <activity android:name=".MainActivity"
+            android:allowTaskReparenting="true"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:alwaysRetainTaskState="false"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:finishOnTaskLaunch="true"
             android:process=":testtt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -109,9 +116,10 @@
         <service
             android:name=".serviceDemo.services.Service2"
             android:enabled="true"
-            android:process=":fr"
+            android:exported="true"
+            android:process=":extproces"
             android:stopWithTask="false"
-            android:visibleToInstantApps="true" />
+            />
 
         <receiver
             android:name=".bradcastDemo.Receiver1"

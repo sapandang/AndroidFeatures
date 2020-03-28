@@ -18,6 +18,7 @@ allprojects {
         jcenter()
         google()
         maven { url 'http://hypertrack-core-android.s3-website-us-east-1.amazonaws.com/' }
+        maven { url 'https://jitpack.io' }
 
     }
 }

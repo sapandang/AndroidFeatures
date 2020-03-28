@@ -62,7 +62,7 @@ public class ServiceDemoActivity extends AppCompatActivity {
 
                 startService(service2);
                 bindService(new Intent(mContext, Service2.class),mServiceConnection,BIND_AUTO_CREATE);
-
+        //  mBoundService.startForegroundService();
             }
         });
 
@@ -82,9 +82,11 @@ public class ServiceDemoActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.wtf("SKDINFO", "ServiceDemoActivity onServiceConnected ");
 
-           // Service2.MyBinder myBinder = (Service2.MyBinder) service;
+          Service2.MyBinder myBinder = (Service2.MyBinder) service;
 
-            mBoundService = ((Service2.MyBinder)service).getService();
+            mBoundService = myBinder.getService();
+            mBoundService.startForegroundService();
+
             mServiceBound = true;
         }
     };

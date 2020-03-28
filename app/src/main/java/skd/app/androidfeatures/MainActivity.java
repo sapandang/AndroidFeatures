@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
 
@@ -105,4 +107,20 @@ public class MainActivity extends AppCompatActivity {
        /* OkHttpClient client = new OkHttpClient();
         client.networkInterceptors().add(new StethoInterceptor());*/
     }
+
+
+    @Override
+    protected void onStop() {
+        Log.wtf("SKDINFO","activity stopped");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.wtf("SKDINFO","activity destroyrd");
+
+        super.onDestroy();
+    }
+
+
 }
